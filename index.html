@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Truoux Exchange</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #6c5ce7;
+      --secondary: #00cec9;
+      --dark: #0f0f1a;
+      --light: #f7f8fc;
+      --glass: rgba(255,255,255,0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #1b1b3a, #050510);
+      color: #fff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .logo i {
+      color: var(--secondary);
+      margin-right: 8px;
+    }
+
+    .nav a {
+      color: #ddd;
+      margin-left: 20px;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    .nav a:hover {
+      color: var(--secondary);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 20px 80px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 700;
+      margin-bottom: 20px;
+      animation: fadeUp 1s ease;
+    }
+
+    .hero span {
+      background: linear-gradient(90deg, var(--secondary), var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      max-width: 640px;
+      margin: auto;
+      font-size: 16px;
+      color: #ccc;
+      animation: fadeUp 1.4s ease;
+    }
+
+    .hero .btn {
+      margin-top: 32px;
+      display: inline-block;
+      padding: 14px 36px;
+      border-radius: 30px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      animation: fadeUp 1.8s ease;
+    }
+
+    /* Sections */
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 100px 24px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      color: #aaa;
+      font-size: 14px;
+    }
+
+    /* Cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--glass);
+      border-radius: 16px;
+      padding: 32px 24px;
+      backdrop-filter: blur(14px);
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .card i {
+      font-size: 28px;
+      color: var(--secondary);
+      margin-bottom: 16px;
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    /* Timeline */
+    .timeline {
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .timeline-item {
+      padding-left: 20px;
+      margin-bottom: 24px;
+      border-left: 3px solid var(--primary);
+      animation: fadeUp 1s ease;
+    }
+
+    .timeline-item h4 {
+      color: var(--secondary);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      background: #050510;
+      color: #777;
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+    }
+  
+    /* Particle canvas */
+    #particles {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+    }
+
+    /* Language switch */
+    .lang-toggle {
+      margin-left: 20px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--secondary);
+      background: transparent;
+      color: #fff;
+      cursor: pointer;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+<canvas id="particles"></canvas>
+
+<header>
+  <div class="nav">
+    <div class="logo"><i class="fa-solid fa-cube"></i>Truoux</div>
+    <div class="nav-links">
+      <button class="lang-toggle" onclick="toggleLang()">EN / 中文</button>
+      <a href="#">Home</a>
+      <a href="#features">Features</a>
+      <a href="#history">History</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div>
+    <h1>The Future of <span>Digital Trading</span></h1>
+    <p>Truoux Exchange is a next‑generation platform focused on security, performance, and global accessibility.</p>
+    <a href="#features" class="btn">Explore Truoux</a>
+  </div>
+</section>
+
+<section id="features">
+  <div class="section-title">
+    <h2>Why Truoux</h2>
+    <p>Built for traders, powered by innovation</p>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <i class="fa-solid fa-shield-halved"></i>
+      <h3>Secure by Design</h3>
+      <p>Multi‑layer protection and real‑time risk control.</p>
+    </div>
+    <div class="card">
+      <i class="fa-solid fa-bolt"></i>
+      <h3>Lightning Speed</h3>
+      <p>High‑performance matching engine with low latency.</p>
+    </div>
+    <div class="card">
+      <i class="fa-solid fa-globe"></i>
+      <h3>Global Access</h3>
+      <p>Serving users worldwide with stable infrastructure.</p>
+    </div>
+  </div>
+</section>
+
+<section id="history">
+  <div class="section-title">
+    <h2>Our Journey</h2>
+    <p>How Truoux is growing</p>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <h4>2021</h4>
+      <p>Truoux was founded with a vision for fair trading.</p>
+    </div>
+    <div class="timeline-item">
+      <h4>2023</h4>
+      <p>Platform reached global users across multiple regions.</p>
+    </div>
+    <div class="timeline-item">
+      <h4>2025</h4>
+      <p>Advanced security upgrades and ecosystem expansion.</p>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <p>© 2026 Truoux Exchange · All Rights Reserved</p>
+</footer>
+
+
+<script>
+/* ========== Language Toggle ========== */
+let currentLang = 'en';
+const textMap = {
+  en: {
+    heroTitle: 'The Future of Digital Trading',
+    heroDesc: 'Truoux Exchange is a next‑generation platform focused on security, performance, and global accessibility.',
+    explore: 'Explore Truoux'
+  },
+  zh: {
+    heroTitle: '数字交易的未来',
+    heroDesc: 'Truoux 交易平台专注于安全性、高性能与全球化服务。',
+    explore: '探索 Truoux'
+  }
+};
+
+function toggleLang() {
+  currentLang = currentLang === 'en' ? 'zh' : 'en';
+  document.querySelector('.hero h1').innerHTML = textMap[currentLang].heroTitle.replace('Trading', '<span>Trading</span>');
+  document.querySelector('.hero p').innerText = textMap[currentLang].heroDesc;
+  document.querySelector('.hero .btn').innerText = textMap[currentLang].explore;
+}
+
+/* ========== Particle Background ========== */
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resize);
+resize();
+
+for (let i = 0; i < 80; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 2 + 1,
+    dx: (Math.random() - 0.5) * 0.5,
+    dy: (Math.random() - 0.5) * 0.5
+  });
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = 'rgba(0, 206, 201, 0.6)';
+
+  particles.forEach(p => {
+    p.x += p.dx;
+    p.y += p.dy;
+    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fill();
+  });
+
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+</body>
+</html>
